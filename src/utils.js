@@ -1,12 +1,9 @@
-export const getVans = async () => {
-    const res = await fetch("/api/vans")
-    if (!res.ok) {
-        throw {
-            message: "Failed to fetch vans", 
-            statusText: res.statusText,
-            status: res.status
-        }
+import { redirect } from "react-router-dom"
+
+export async function requireAuth() {
+    const isLoggedIn = false
+    
+    if (!isLoggedIn) {
+        throw redirect("/login?message=You must log in first.")
     }
-    const data = await res.json()
-    return data.vans
 }
