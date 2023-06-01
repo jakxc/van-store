@@ -1,4 +1,4 @@
-import React from "react"
+import './index.css'
 import { NavLink, Outlet } from "react-router-dom"
 
 export default function HostLayout() {

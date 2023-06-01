@@ -1,10 +1,10 @@
-import React from "react"
+import './index.css'
 import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom"
 import { getHostVans } from "../../../api"
 import { requireAuth } from "../../../utils"
 
-export async function loader({ params }) {
-    await requireAuth();
+export async function loader({ params, request }) {
+    await requireAuth(request);
     return getHostVans(params.id);
 }
 
@@ -32,7 +32,7 @@ export default function HostVanDetail() {
                         <i
                             className={`van-type van-type-${currentVan.type}`}
                         >
-                            {currentVan.type}
+                            {currentVan.type.charAt(0).toUpperCase() + currentVan.type.slice(1)}
                         </i>
                         <h3>{currentVan.name}</h3>
                         <h4>${currentVan.price}/day</h4>

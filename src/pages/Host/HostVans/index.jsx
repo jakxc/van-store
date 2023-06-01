@@ -1,14 +1,15 @@
+import './index.css'
 import { Link, useLoaderData } from "react-router-dom"
-import { getHostVans } from "../../../api";
+import { getHostVans } from "../../../api"
 import { requireAuth } from "../../../utils"
 
-export async function loader() {
-    await requireAuth();
+export async function loader({ request }) {
+    await requireAuth(request);
     return getHostVans();
 }
 
 export default function HostVans() {
-    const vans = useLoaderData();
+    const vans = useLoaderData()
 
     const hostVansEls = vans.map(van => (
         <Link

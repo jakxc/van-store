@@ -1,3 +1,4 @@
+import './index.css'
 import { useState } from "react"
 import { Link, useSearchParams, useLoaderData } from "react-router-dom"
 import { getVans } from "../../api";
