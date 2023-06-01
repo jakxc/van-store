@@ -1,5 +1,4 @@
 import './index.css'
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   RouterProvider,
@@ -14,17 +13,18 @@ import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetail"
 import Dashboard from "./pages/Host/Dashboard"
 import Income from "./pages/Host/Income"
 import Reviews from "./pages/Host/Reviews"
-import HostVans, { loader as hostVansLoader } from "./pages/Host/HostVans"
+import HostVans, { loader as hostVansLoader} from "./pages/Host/HostVans"
 import HostVanDetail, { loader as hostVanDetailLoader } from "./pages/Host/HostVanDetail"
 import HostVanInfo from "./pages/Host/HostVanInfo"
 import HostVanPricing from "./pages/Host/HostVanPricing"
 import HostVanPhotos from "./pages/Host/HostVanPhotos"
-import Login, { loader as loginLoader } from "./pages/Login"
+import NotFound from "./pages/NotFound"
+import Login, { loader as loginLoader, action as loginAction } from "./pages/Login"
 import Layout from "./components/Layout"
 import HostLayout from "./components/HostLayout"
-import NotFound from './pages/NotFound';
-import Error from './components/Error';
-import { requireAuth } from './utils';
+import Error from "./components/Error"
+import { requireAuth } from "./utils"
+
 import "./server"
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -35,6 +35,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       path="login"
       element={<Login />}
       loader={loginLoader}
+      action={loginAction}
     />
     <Route
       path="vans"
@@ -48,7 +49,11 @@ const router = createBrowserRouter(createRoutesFromElements(
       loader={vanDetailLoader}
     />
 
-    <Route path="host" element={<HostLayout />}>
+    <Route 
+      path="host" 
+      element={<HostLayout />}
+      errorElement={<Error />}
+    >
       <Route
         index
         element={<Dashboard />}
@@ -97,7 +102,7 @@ const router = createBrowserRouter(createRoutesFromElements(
 
 function App() {
   return (
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   )
 }
 

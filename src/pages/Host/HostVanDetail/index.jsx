@@ -4,8 +4,8 @@ import { getHostVans } from "../../../api"
 import { requireAuth } from "../../../utils"
 
 export async function loader({ params }) {
-    await requireAuth()
-    return getHostVans(params.id)
+    await requireAuth();
+    return getHostVans(params.id);
 }
 
 export default function HostVanDetail() {

@@ -8,7 +8,7 @@ export async function loader() {
 }
 
 export default function HostVans() {
-    const vans = useLoaderData()
+    const vans = useLoaderData();
 
     const hostVansEls = vans.map(van => (
         <Link
