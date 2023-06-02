@@ -34,6 +34,7 @@ export default function Header() {
                 <Link to="login" className="login-link">
                     <img 
                         src={avatarIcon}
+                        alt="avatar"
                         className="login-icon"
                     />
                 </Link>

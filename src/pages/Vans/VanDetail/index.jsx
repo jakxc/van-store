@@ -1,9 +1,9 @@
 import './index.css'
 import { Link, useLocation, useLoaderData } from "react-router-dom"
-import { getVans } from "../../../api";
+import { getVan } from "../../../api";
 
 export function loader({ params }) {
-    return getVans(params.id)
+    return getVan(params.id)
 }
 
 export default function VanDetail() {
@@ -21,7 +21,7 @@ export default function VanDetail() {
                 className="back-button"
             >&larr; <span>Back to {type} vans</span></Link>
             <div className="van-detail">
-                <img src={van.imageUrl} />
+                <img src={van.imageUrl} alt={van.name}/>
                 <i className={`van-type ${van.type} selected`}>
                     {van.type.charAt(0).toUpperCase() + van.type.slice(1)}
                 </i>

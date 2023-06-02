@@ -1,12 +1,12 @@
 import './index.css'
 import { Suspense } from 'react'
 import { Link, NavLink, Outlet, useLoaderData, Await,defer } from "react-router-dom"
-import { getHostVans } from "../../../api"
+import { getVan } from "../../../api"
 import { requireAuth } from "../../../utils"
 
 export async function loader({ params, request }) {
     await requireAuth(request);
-    return defer({ currentVan: getHostVans(params.id) });
+    return defer({ currentVan: getVan(params.id) });
 }
 
 export default function HostVanDetail() {
