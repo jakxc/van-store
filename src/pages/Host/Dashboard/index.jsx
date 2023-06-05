@@ -5,12 +5,12 @@ import { getHostVans } from "../../../api"
 import { requireAuth } from "../../../utils"
 import { BsStarFill } from "react-icons/bs"
 
-export async function loader({ request }) {
+export const loader = async ({ request }) => {
     await requireAuth(request)
     return defer({ vans: getHostVans() })
 }
 
-export default function Dashboard() {
+const Dashboard = () => {
     const loaderData = useLoaderData()
 
     function renderVanElements(vans) {
@@ -62,3 +62,5 @@ export default function Dashboard() {
         </>
     )
 }
+
+export default Dashboard;

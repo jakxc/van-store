@@ -8,11 +8,11 @@ import {
 } from "react-router-dom"
 import { loginUser } from "../../api"
 
-export function loader({ request }) {
+export const loader = async ({ request }) => {
     return new URL(request.url).searchParams.get("message")
 }
 
-export async function action({ request }) {
+export const action = async ({ request }) => {
     const formData = await request.formData()
     const email = formData.get("email")
     const password = formData.get("password")
@@ -28,7 +28,7 @@ export async function action({ request }) {
     }
 }
 
-export default function Login() {
+const Login = () => {
     const errorMessage = useActionData()
     const message = useLoaderData()
     const navigation = useNavigation()
@@ -66,3 +66,5 @@ export default function Login() {
         </div>
     )
 }
+
+export default Login;

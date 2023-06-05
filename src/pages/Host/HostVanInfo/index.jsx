@@ -1,7 +1,7 @@
 import './index.css'
 import { useOutletContext } from "react-router-dom"
 
-export default function HostVanInfo() {
+const HostVanInfo = () => {
     const { currentVan } = useOutletContext()
     
     return (
@@ -13,3 +13,5 @@ export default function HostVanInfo() {
         </section>
     )
 }
+
+export default HostVanInfo;

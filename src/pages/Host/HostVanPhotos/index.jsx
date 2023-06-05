@@ -1,7 +1,7 @@
 import './index.css'
 import { useOutletContext } from "react-router-dom"
 
-export default function HostVanPhotos() {
+const HostVanPhotos = () => {
     const { currentVan } = useOutletContext()
     return (
         <img 
@@ -11,3 +11,5 @@ export default function HostVanPhotos() {
         />
     )
 }
+
+export default HostVanPhotos;

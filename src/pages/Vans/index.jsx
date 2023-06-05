@@ -9,11 +9,11 @@ import {
 } from "react-router-dom"
 import { getVans } from "../../api"
 
-export function loader() {
+export const loader = () => {
     return defer({ vans: getVans() })
 }
 
-export default function Vans() {
+const Vans = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const dataPromise = useLoaderData()
 
@@ -49,7 +49,7 @@ export default function Vans() {
                         <h3>{van.name}</h3>
                         <p>${van.price}<span>/day</span></p>
                     </div>
-                    <i className={`van-type ${van.type} selected`}>{van.type}</i>
+                    <i className={`van-type ${van.type} selected`}>{van.type.charAt(0).toUpperCase() + van.type.slice(1)}</i>
                 </Link>
             </div>
         ))
@@ -104,3 +104,5 @@ export default function Vans() {
         </div>
     )
 }
+
+export default Vans

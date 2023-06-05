@@ -2,11 +2,11 @@ import './index.css'
 import { Link, useLocation, useLoaderData } from "react-router-dom"
 import { getVan } from "../../../api";
 
-export function loader({ params }) {
+export const loader = ({ params }) => {
     return getVan(params.id)
 }
 
-export default function VanDetail() {
+const VanDetail = () => {
     const location = useLocation();
     const van = useLoaderData();
 
@@ -33,3 +33,5 @@ export default function VanDetail() {
         </div>
     )
 }
+
+export default VanDetail;

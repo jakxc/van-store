@@ -4,12 +4,12 @@ import { Link, useLoaderData, defer, Await } from "react-router-dom"
 import { getHostVans } from "../../../api"
 import { requireAuth } from "../../../utils"
 
-export async function loader({ request }) {
+export const loader = async ({ request }) => {
     await requireAuth(request)
     return defer({ vans: getHostVans() })
 }
 
-export default function HostVans() {
+const HostVans = () => {
     const dataPromise = useLoaderData()
 
     const renderVanElements = (vans) => {
@@ -50,3 +50,5 @@ export default function HostVans() {
         </section>
     )
 }
+
+export default HostVans;

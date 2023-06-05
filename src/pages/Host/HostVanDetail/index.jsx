@@ -4,12 +4,12 @@ import { Link, NavLink, Outlet, useLoaderData, Await,defer } from "react-router-
 import { getVan } from "../../../api"
 import { requireAuth } from "../../../utils"
 
-export async function loader({ params, request }) {
+export const loader = async ({ params, request }) => {
     await requireAuth(request);
     return defer({ currentVan: getVan(params.id) });
 }
 
-export default function HostVanDetail() {
+const HostVanDetail = () => {
     const dataPromise = useLoaderData()
 
     const activeStyles = {
@@ -75,3 +75,5 @@ export default function HostVanDetail() {
         </section>
     )
 }
+
+export default HostVanDetail;

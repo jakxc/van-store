@@ -2,7 +2,7 @@ import './index.css'
 import bgImg from "../../assets/images/about-hero.png"
 import { Link } from "react-router-dom"
 
-export default function About() {
+const About = () => {
     return (
         <div className="about-page-container">
             <img 
@@ -22,3 +22,5 @@ export default function About() {
         </div>
     );
 }
+
+export default About;
